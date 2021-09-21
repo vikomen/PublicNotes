@@ -1,209 +1,566 @@
-{
-	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-"Fraction":{
-	"prefix": "frac",
-	"body": "\\\\frac{$1}{$2}$3"
-},
-"Squared":{
-	"prefix": "sq",
-	"body": "^2"
-},
-"Inline Math":{
-	"prefix": "mk",
-	"body": "$ $1 $ $2"
-},
-"Display Math":{	
-	"prefix": "dm",
-	"body": "\\\\[ $1 \\\\] $2"
-},
-"Begin":{	
-	"prefix": "begin",
-	"body":[ "\\\\begin{$1}",
-			"$2",
-			"\\\\end{$1}",
-			"$3"
-	],
+\documentclass[12pt]{article}
 
-},
-"includegraphics":{
-	"prefix": "inc",
-	"body": "\\\\includegraphics[$1]{$2}$3"
-},
-"BlueText": {
-	"prefix": "blue",
-	"body": [
-	  "\\\\textcolor{bl2}{$1}$2"
-	],
-	"description": "BlueText"
-  },
-  "Theorem": {
-	"prefix": "theorem",
-	"body": [
-	  "\\\\begin{theorem}",
-	  "$1",
-	  "\\\\end{theorem}",
-	  "$2"
-	],
-	"description": "Theorem"
-  },
-  "Blue Theorem": {
-	"prefix": "bluetheorem",
-	"body": [
-	  "\\\\begin{bluetheorem}",
-	  "\\\\begin{theorem}",
-	  "$1",
-	  "\\end{theorem}",
-	  "\\end{bluetheorem}",
-	  "$2"
-	],
-	"description": "Blue Theorem"
-  },
-  "Blue Definition": {
-	"prefix": "bluedefinition",
-	"body": [
-	  "\\\\begin{bluedefinition}",
-	  "$1",
-	  "\\\\end{bluedefinition}",
-	  "$0"
-	],
-	"description": "Blue Definition"
-  },
-  "Rightarrow": {
-	"prefix": "rightarrow",
-	"body": [
-	  "\\rightarrow $0"
-	],
-	"description": "Rightarrow"
-  },
-  "Math Capital": {
-	"prefix": "mathcal",
-	"body": [
-	  "\\mathcal{$1} $0"
-	],
-	"description": "Math Capital"
-  },
-  "Proof": {
-	"prefix": "proof",
-	"body": [
-	  "\\begin{proof}",
-	  "$1",
-	  "\\end{proof}",
-	  "$2"
-	],
-	"description": "Proof"
-  },
-  "Remark": {
-	"prefix": "remark",
-	"body": [
-	  "\\begin{remark}",
-	  "$1",
-	  "\\end{remark}",
-	  "$2"
-	],
-	"description": "Remark"
-  },
-  "twopmatrix": {
-	"prefix": "twopmatrix",
-	"body": [
-	  "\\begin{pmatrix}",
-	  "$1 & $2 \\\\\\\\",
-	  "$3 & $4",
-	  "\\end{pmatrix}",
-	  "$5"
-	],
-	"description": "twopmatrix"
-  },
-  "threepmatrix": {
-	"prefix": "threepmatrix",
-	"body": [
-	  "\\begin{pmatrix}",
-	  "$1 & $2 & $3 \\\\\\\\",
-	  "$4 & $5 & $6 \\\\\\\\",
-	  "$7 & $8 & $9",
-	  "\\end{pmatrix}",
-	  "$10"
-	],
-	"description": "threepmatrix"
-  },
-  "example": {
-	"prefix": "example",
-	"body": [
-	  "\\begin{example}",
-	  "$1",
-	  "\\end{example}",
-	  "$2"
-	],
-	"description": "example"
-  },
-  "cdots": {
-	"prefix": "cdots",
-	"body": [
-	  "\\cdots"
-	],
-	"description": "cdots"
-  },
-  "dots": {
-	"prefix": "dots",
-	"body": [
-	  "\\dots"
-	],
-	"description": "dots"
-  },
-  "pmatrix": {
-	"prefix": "pmatrix",
-	"body": [
-	  "\\begin{pmatrix}",
-	  "$1",
-	  "\\end{pmatrix}",
-	  "$2 $0"
-	],
-	"description": "pmatrix"
-  },
-  "and": {
-	"prefix": "and",
-	"body": [
-	  "& $0"
-	],
-	"description": "and"
-  },
-  "parenthasies": {
-	"prefix": "par",
-	"body": [
-	  "($1)$2 $0"
-	],
-	"description": "parenthasies"
-  },
-  "to the power of": {
-	"prefix": "tothe",
-	"body": [
-	  "^{$1}$2 $0"
-	],
-	"description": "to the power of"
-  },
-  "Union": {
-	"prefix": "cap",
-	"body": [
-	  "\\cap"
-	],
-	"description": "Union"
-  },
-  "Intersection": {
-	"prefix": "cup",
-	"body": [
-	  "\\cup"
-	],
-	"description": "Intersection"
-  }
+
+
+\usepackage{fancyhdr,lipsum}
+\usepackage{eso-pic,graphicx}
+\usepackage[a4paper,bindingoffset=0in,%
+            left=0.5in,right=0.5in,top=0.8in,bottom=1in,%
+            footskip=.5in]{geometry}
+
+\newcommand{\newsection}[1]{%
+  \fancyhead[C]{\bfseries\LARGE \thesection~#1}% Clear
 }
+
+\pagestyle{fancy}
+\fancyhf{}% Clear header/footer
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{seqsplit}
+\usepackage{libertine}
+\usepackage{amsmath} % Imports amsmath
+\usepackage{blindtext}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{physics} %Allows for differentials
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{empheq}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{eso-pic,graphicx}
+\usepackage{xcolor,soul}
+\usepackage{xpatch}
+
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+
+
+%Defines the Customr Colors
+\definecolor{bl2}{HTML}{0b4973} %These are the blue colours
+\definecolor{bl1}{HTML}{dce8eb}
+\definecolor{g1}{HTML}{dcebdd} %These are the green colours
+\definecolor{g2}{HTML}{0b731c}
+\definecolor{r1}{HTML}{ebdcdc} %These are the red colours
+\definecolor{r2}{HTML}{730b0b}
+\definecolor{br1}{HTML}{ebe8dc} %These are the brown colours
+\definecolor{br2}{HTML}{734b0b}
+\definecolor{br3}{HTML}{4c3c16}
+
+\definecolor{p2}{HTML}{520b73}
+\definecolor{p1}{HTML}{664f71}
+
+%Defines the Custom Color Boxes
+%1.1 Theorem - Blue
+\newtcolorbox{bluetheorem}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=bl2,
+title code={
+\path[fill=bl1] (title.south west) rectangle (title.north east);
+\path[draw=bl2,solid,line width=0.75mm]
+([xshift=5mm]title.south west) -- ([xshift=-5mm]title.south east);
+},
+boxrule=0pt,frame hidden,
+borderline west={4pt}{0pt}{bl2},
+colback=bl1,
+colbacktitle=bl1,
+opacityback=0.6
+}
+
+%1.2 Definition - Blue
+\newtcolorbox{bluedefinition}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=bl2,
+boxrule=0pt,frame hidden,
+opacityback=0,
+%borderline west={10pt}{5pt}{blue,opacity=0.5},
+overlay={
+      \draw[line width=10pt,bl2,opacity=0.5]
+          ([shift={(0mm,-2mm)}]interior.north west)
+          --([shift={(0mm,2mm)}]interior.south west);
+        }
+}
+
+%2.1 Theorem - Green
+\newtcolorbox{greentheorem}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=g2,
+title code={
+\path[fill=g1] (title.south west) rectangle (title.north east);
+\path[draw=g2,solid,line width=0.75mm]
+([xshift=5mm]title.south west) -- ([xshift=-5mm]title.south east);
+},
+boxrule=0pt,frame hidden,
+borderline west={4pt}{0pt}{g2},
+colback=g1,
+colbacktitle=g1,
+opacityback=0.6
+}
+
+%2.2 Definition - Green
+\newtcolorbox{greendefinition}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=g2,
+boxrule=0pt,frame hidden,
+opacityback=0,
+%borderline west={10pt}{5pt}{blue,opacity=0.5},
+overlay={
+      \draw[line width=10pt,g2,opacity=0.5]
+          ([shift={(0mm,-2mm)}]interior.north west)
+          --([shift={(0mm,2mm)}]interior.south west);
+        }
+}
+
+%3.1 Theorem - Red
+\newtcolorbox{redtheorem}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=r2,
+title code={
+\path[fill=r1] (title.south west) rectangle (title.north east);
+\path[draw=r2,solid,line width=0.75mm]
+([xshift=5mm]title.south west) -- ([xshift=-5mm]title.south east);
+},
+boxrule=0pt,frame hidden,
+borderline west={4pt}{0pt}{r2},
+colback=r1,
+colbacktitle=r1,
+opacityback=0.6
+}
+
+%3.2 Definition - Red
+\newtcolorbox{reddefinition}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=r2,
+boxrule=0pt,frame hidden,
+opacityback=0,
+%borderline west={10pt}{5pt}{blue,opacity=0.5},
+overlay={
+      \draw[line width=10pt,r2,opacity=0.5]
+          ([shift={(0mm,-2mm)}]interior.north west)
+          --([shift={(0mm,2mm)}]interior.south west);
+        }
+}
+
+%4.1 Theorem - Brown
+\newtcolorbox{browntheorem}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=br2,
+title code={
+\path[fill=br1] (title.south west) rectangle (title.north east);
+\path[draw=br2,solid,line width=0.75mm]
+([xshift=5mm]title.south west) -- ([xshift=-5mm]title.south east);
+},
+boxrule=0pt,frame hidden,
+borderline west={4pt}{0pt}{br2},
+colback=br1,
+colbacktitle=br1,
+opacityback=0.6
+}
+
+%4.2 Definition - Brown
+\newtcolorbox{browndefinition}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=br2,
+boxrule=0pt,frame hidden,
+opacityback=0,
+%borderline west={10pt}{5pt}{blue,opacity=0.5},
+overlay={
+      \draw[line width=10pt,br2,opacity=0.5]
+          ([shift={(0mm,-2mm)}]interior.north west)
+          --([shift={(0mm,2mm)}]interior.south west);
+        }
+}
+
+%5.1 Theorem - Purple
+\newtcolorbox{purpletheorem}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=p2,
+title code={
+\path[fill=p1] (title.south west) rectangle (title.north east);
+\path[draw=p2,solid,line width=0.75mm]
+([xshift=5mm]title.south west) -- ([xshift=-5mm]title.south east);
+},
+boxrule=0pt,frame hidden,
+borderline west={4pt}{0pt}{p2},
+colback=p1,
+colbacktitle=p1,
+opacityback=0.6
+}
+
+%5.2 Definition - Purple
+\newtcolorbox{purpledefinition}{
+enhanced,
+fonttitle=\sffamily\bfseries,
+coltitle=p2,
+boxrule=0pt,frame hidden,
+opacityback=0,
+%borderline west={10pt}{5pt}{blue,opacity=0.5},
+overlay={
+      \draw[line width=10pt,p2,opacity=0.5]
+          ([shift={(0mm,-2mm)}]interior.north west)
+          --([shift={(0mm,2mm)}]interior.south west);
+        }
+}
+
+
+\newtheorem{theorem}{Theorem}[section] %This defines the \begin{Theorem} commands
+\newtheorem{corollary}{Corollary}[theorem] %This defines the \begin{Corollary} commands
+\newtheorem{lemma}[theorem]{Lemma} %This defines the \begin{Lemma} commaands and formating
+
+
+\theoremstyle{definition} %This changes the theorem style. In this case, we want the following theorem to have style of a definition as it won't change the formating.
+\newtheorem*{example}{Example}
+\newtheorem*{remark}{Remark}
+
+\renewcommand{\baselinestretch}{0.9} % This deals with the dimentions of the page.
+
+
+
+\title{Algebra and Geometry} % Title
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=false, %set true if you want colored links
+  linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+\newcommand{\tcb}[1]{\textcolor{bl2}{#1}} %Use this for colouring blue text
+\newcommand{\inc}[2]{\includegraphis[#1]{#2}} %shorthand for includegraphis
+
+
+\begin{document}
+
+
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{whitelinesa1.png}}
+
+\maketitle
+
+\tableofcontents
+\newpage
+\newsection{Groups and Permutations}
+\sethlcolor{bl1} %For the first chapter (here in the commands we have \newsection) we will use blue.
+
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{whitelinesblue.png}}
+
+
+\section{Groups}
+
+\begin{flushleft}
+
+
+
+  \begin{bluedefinition}
+    A \textcolor{bl2}{binart operation $*$} on a set $X$ is a rule which is used to combine two elemtents, say $ x $ and $ y $ , of $X$ to obtain a thid object which we denote by $x * y$.
+  \end{bluedefinition}
+
+  \begin{bluedefinition}
+    A \textcolor{bl2}{group} is a set $ G $ , together with a binary operation $ * $ on $ G $ which has the following properties:
+    \begin{enumerate}
+      \item \textbf{(Closure)} For all $ g $  and $ h $ in $G$, $ g*h \in G $
+      \item \textbf{(Associativity)} For all $ f,g $ and $ h $  in $ G $, $ f*(g*h)=(f*g)*h $
+      \item \textbf{(Left and Right Identity)} There is a unique $ e $ in $ G $ such that for all $ g $ in $ G $ ,$ g*e=g=e*g$
+      \item \textbf{(Inverse)} If $ g \in G $ there is some $ h $ in $ G $ such that $ g*h=e=h*g $
+    \end{enumerate}
+  \end{bluedefinition}
+
+  \begin{remark}
+    If we show that such inverse exists then it must be unique. This is because if
+    there was to exist another idenetity $ a $  then by definition $ e = a *e=a $ giving
+    a contradiction.
+  \end{remark}
+
+  The phrase `$ X $ is a group with respect to $ * $ .
+
+  \begin{bluedefinition}
+    Let $ G  $ be a group with respect to $ * $ . We say that $ f $ and $ g $ in $ G $ \textcolor{bl2}{commute} if $ f*g=g*f $ . If $ f*g=g*f $ for every $ f $ and $ g $ in $ G $ , we say that $ G $ is \textcolor{bl2}{abelian}, or commutative, group. We often abbrevieate this to ``$ G $ is \textcolor{bl2}{abelian}''.
+  \end{bluedefinition}
+
+  \newpage
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{whitelinesblue.png}}
+\section{Permutations of a finite set}
+
+\begin{bluedefinition}
+A \textcolor{bl2}{function} $ f:X \rightarrow X $ from a finite set $ X $  to itself is a rule which assigns to each $ x $  in $ X $  a unique element, which we write as $ f(x) $ , of $ X $ 
+\end{bluedefinition}
+We can define such function explicitely ; for \textcolor{bl2}{example}, when $ X={a,b,c} $ we cand efine $ f:x \rightarrow X $  by the rule $ f(a)=b,f(b)=c, f(c)=a $. 
+
+\begin{bluedefinition}
+A function $ f:X \rightarrow Y $ is \textcolor{bl2}{injective} if every element of $ X $ maps to exactly one element of $ Y $ .
+\end{bluedefinition}
+
+
+\begin{bluedefinition}
+A function $ f: X \rightarrow Y $  is \textcolor{bl2}{surjection} if every element $ y $  of $ Y $  has an element $ x $ of $ X $ mapping to it.
+\end{bluedefinition}
+
+
+
+\begin{bluedefinition}
+A function $ f $  has an \textcolor{bl2}{inverse} if it is \textcolor{bl2}{surjective} (i.e. both injective and surjective.)
+\end{bluedefinition}
+
+\begin{bluedefinition}
+A \textcolor{bl2}{permutation} of $ X $  is an invertible map $ f: X \rightarrow X $ . The set of permutations of $ X $  is denoted by $ \mathcal{P} (X) $  
+\end{bluedefinition}
+
+
+
+\begin{bluetheorem}
+\begin{theorem}
+The set $ \mathcal{P} (X) $ of permutations of a finite non-empty set $ X $  is a group with respect to the composition of the functions.
+\end{theorem}
+\end{bluetheorem}
+
+\begin{proof}
+Should I add the proof?
+\end{proof}
+
+\begin{remark}
+It is usual to speak of the product of permutations rather than the composition of permutations.
+\end{remark}
+
+
+\begin{bluedefinition}
+The \textcolor{bl2}{symmatric group $ S_n $ } is the group of permutations of $ \{1,2, \dots, n \} $ 
+\end{bluedefinition}
+
+
+As a permutatio $ \rho $ is a function in the usual notation $ \rho(k) $ for the image of an intiger $ k $ under $ \rho $. However, it it is customary, to write $ \rho $  in the form
+
+\[ \rho = \begin{pmatrix}
+1 & 2 & \dots & n \\
+\rho(1) & \rho(2) & \dots & \rho(n)
+\end{pmatrix}
+, \]
+which means that 
+
+\[ \begin{matrix}
+  1 \xrightarrow[]{\rho} \rho(1) \\
+  2 \xrightarrow[]{\rho} \rho(2) \\
+  \vdots \\
+  n \xrightarrow[]{\rho} \rho(n) 
+\end{matrix}
+\]
+A permutation $ \rho $ is said to \textcolor{bl2}{fix k}, and $ k $  is a fixed point of $ \rho(k)=k $. By convention, we don't write these down. 
+
+\begin{example}
+If $ \rho $  is a permutation of $ \{ 1,2, \dots, 9 \}$, and if
+
+\[ \rho = \begin{pmatrix}
+1 & 3 & 7 & 8 \\
+8 & 7 & 3 & 1
+\end{pmatrix}
+ \] 
+then $ \rho $ interchanges $ 1 $ and $ 8 $ , and $ 3 $ and $ 7 $ , and it fixes $ 2,4,5,6 $ and $ 9 $ .
+\end{example}
+
+If $ \alpha $ and $ \beta $ are permutations of $ \{1,\dots,n \} $ then $ \alpha \beta $ is the permutation obtained by applying $ \beta $ first then $ \alpha $ . 
+\newpage
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{whitelinesblue.png}}
+
+\begin{example}
+ If \[ \alpha = \begin{pmatrix}
+    1 & 2 & 3 & 4 \\
+    2 & 4 & 3 & 1
+    \end{pmatrix},
+     \quad \beta = \begin{pmatrix}
+     1 & 2 & 3 & 4 \\
+     2 & 3 & 4 & 1
+     \end{pmatrix}
+     \] then
+     \[ \alpha \beta= \begin{pmatrix}
+      1 & 2 & 3 & 4 \\
+      2 & 4 & 3 & 1
+      \end{pmatrix} \begin{pmatrix}
+        1 & 2 & 3 & 4 \\
+        2 & 3 & 4 & 1
+        \end{pmatrix}= \begin{pmatrix}
+        1 & 2 & 3 & 4 \\
+        4 & 3 & 1 & 2
+        \end{pmatrix}
+        , \]
+as \[ \begin{matrix}
+1 \xrightarrow[]{\beta} 2 \xrightarrow[]{\alpha} 4 \\
+2 \xrightarrow[]{\beta} 3 \xrightarrow[]{\alpha} 3 \\
+3 \xrightarrow[]{\beta} 4 \xrightarrow[]{\alpha} 1 \\
+4 \xrightarrow[]{\beta} 1 \xrightarrow[]{\alpha} 2
+\end{matrix}
+. \] 
+\end{example}
+
+\begin{example}[Deconstructing Cycles]    
+  Say we wanted to deconstruct the following cycle $ (1 \; 3 \; 5 \; 2)  $ . We can do this as
+  \[
+  (1 \; 3 \; 5 \; 2) = (1 \; 2) (1 \; 5) (1 \; 3)   
+  .\] 
+To understand this we check what happens to every single entry. Observe
+\[
+\begin{matrix}
+  1 \xrightarrow[]{(1 \; 3)} 3 \xrightarrow[]{(1 \; 5) } 3 \xrightarrow[]{(1 \; 2) } 3 \\
+  2 \xrightarrow[]{(1 \; 3)} 2 \xrightarrow[]{(1 \; 5) } 2 \xrightarrow[]{(1 \; 2) } 1 \\
+  3 \xrightarrow[]{(1 \; 3)} 1 \xrightarrow[]{(1 \; 5) } 5 \xrightarrow[]{(1 \; 2) } 5 \\
+  4 \xrightarrow[]{(1 \; 3)} 4 \xrightarrow[]{(1 \; 5) } 4 \xrightarrow[]{(1 \; 2) } 4 \\
+  5 \xrightarrow[]{(1 \; 3)} 5 \xrightarrow[]{(1 \; 5) } 1 \xrightarrow[]{(1 \; 2) } 2
+\end{matrix}
+\]
+The general technique is to take the first entry and write it in a cycle with the second
+\[
+(a \; b \; \dots \; z) = \cdots (a \; b)  
+\] 
+
+then ask your self what do I have to do so that the second entry goes to the third
+\[
+(a \; b \; \dots \; z) = \cdots (b \; c) (a \; b)
+\] 
+as note $ (a \; b)  $ has already mapped $ b \rightarrow a $ because $ ( \alpha \; \beta) \iff (\beta \; \alpha) $. Continuing with this proccess gives
+
+$ (a \; b \; \dots \; z) = (a \; z) \cdots (a \; c) (a \; b)  $ .
+\end{example}  
+
+\begin{example}[Finding inverses of permutations]    
+    Once we have written a permutation $ \rho $ as a product of cycles
+    \[
+    (\alpha \; \gamma ) \cdots (\zeta \; \omega) = c_1 \cdots c_n  
+    .\] ,where $ c_i $ is the ith cycle with lenght $ l_i $ , we can operate on both sides of the equation
+    \[
+    \rho = c_1 \cdots c_n
+    .\] so that the right hand side is the idenitity, which in terns will give us the inverse opperating on $ \rho $  on the LHS. Doing this we get (as note $ c_k^{l_k}=I$$ $$ $ ) 
+    \begin{align*}
+      \rho &= c_1 \cdots c_n \\
+      {c_1}^{l_1 -1}\rho&= {c_1}^{l_1} c_2 \cdots c_n = c_2 c_3 \cdots c_n \\
+      &\vdots \\
+      {c_1}^{l_1 -1}c_2^{l_2 -1} \cdots c_n^{l_n-1} \rho &= I  
+    \end{align*}
+    Thus
+    \[
+    \rho^{-1}= c_1^{l_1-1}\cdots c_k^{l_k-1} \cdots c_n^{l_n-1} 
+    .\] 
+\end{example} 
+
+\begin{bluedefinition}
+Se say that two permutations $ \alpha $ and $ \beta $  are \textcolor{bl2}{disjoint} if, for every $ k $  in $ \{1,2, \dots , n \} $, either $ \alpha(k)=k $  or $ \beta(k)=k $. (note that this does not require one of them to be the identity, but rather, for some given k one of the following is true).
+\end{bluedefinition}
+\begin{example}
+And example of disjoint permutations are
+\[ \begin{pmatrix}
+1 & 2 & 3 \\
+3 & 1 & 2
+\end{pmatrix}
+\quad \text{and} \begin{pmatrix}
+4 & 5 & 6 \\
+4 & 6 & 5
+\end{pmatrix}
+ \] as for k=1, the second permutation satisfies the requirement; for k=2,  the second again; for k=3, the second again; for k=4, the first; for k= 5, the first again; for k=6, the first again.
+\end{example}
+
+
+\begin{bluedefinition}
+The \textcolor{bl2}{cycle} $ (n_1 \dots n_q) $ is the permutation
+
+ \[ \begin{pmatrix}
+  n_1 & n_2 &\dots n_{q-1} & n_q \\
+  n_2 & n_3 & \dots n_q & n_1
+  \end{pmatrix}. \]
+Explicitely, this maps $ n_j $ to $ n_{n+1} $ when $ 1\leq j < q $ , and $ n_q $  to $ n_1 $ , and it fixes all other intigers in $ \{ 1, \dots,n\} $. We say that this cycle has \textcolor{bl2}{lenght} $ q $ , or that it is a q-cycle.  
+\end{bluedefinition}
+
+\newpage
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{whitelinesblue.png}}
+
+\begin{example}
+For example (1 3 5) will be
+\[ (1 3 5 ) = \begin{pmatrix}
+1 & 3& 5 \\
+3 & 5 & 1
+\end{pmatrix}
+= \begin{pmatrix}
+1 & 2 & 3 & 4 & 5  \\
+3 & 2 & 5 & 4 &1 
+\end{pmatrix}
+ \] 
+\end{example}
+
+
+
+\begin{example}
+Observe that if
+\[ \sigma = \begin{pmatrix}
+1 & 2 & 3 & 4 & 5 & 6 &  7 \\
+5 &  7 & 2 &  1 & 4 &  3 & 6
+\end{pmatrix}, \]
+ then we see that we can write this as two disjoint permutations \[= \begin{pmatrix}
+ 1 & 5 &  4 \\ 5 &  4 &  1
+ \end{pmatrix}
+  \begin{pmatrix}
+  2 & 7 &  6 &  3 \\ 7 & 6 &  3 & 2
+  \end{pmatrix} = ( 1 \; 5 \; 4) (2 \; 7 \; 6 \; 3)   
+  \] 
+\end{example}
+ 
+
+\begin{bluedefinition}
+Let $ u $ be the smallest positive intiger with the property that $ p ^{u} =k  $; then the distrinct numbers $  k, \rho (k), \rho ^{2} (k), \dots, \rho ^{u -1} (k)$ are cyclically permutated by $ \rho $ . We call
+\[ O (k) = \{k, \rho (k), \rho ^2 (k), \dots, \rho ^{u-1} (k) \},  \] 
+the \textcolor{bl2}{orbit} of $ k $  under $ \rho $ . Note that such an orbit is a set
+\end{bluedefinition}
+
+
+\begin{bluedefinition}
+We observe that
+\[ \{1,\dots,n\}= O (k_1) \cup \cdots O (k_m) , \]
+where we note $ O(k_i)  $ are pairwise disjoint sets. 
+We call this the \textcolor{bl2}{orbit-decomposition} of $ \{1,\dots,n\} $ .
+\end{bluedefinition}
+
+\begin{bluetheorem}
+    \begin{theorem}
+        Let $ \rho $ be a permutation of $ \{1,\cdots, n\} $. Then $ \rho $ can be expressed as a product of disjoint (commuting)  cycles. 
+    \end{theorem}
+\end{bluetheorem}
+ 
+\begin{proof}
+    The proof relies on the fact that we can write the whole set as the union of orbits which are pariwise disjoint sets.
+\end{proof}
+
+
+\begin{bluedefinition}
+The representation $ \rho = \rho_1 \cdots \rho_m $ which is derived from the orbit decompoistion, and which is unique up to the order of the factors $ \rho_j $ (which is the cycle associated with the orbit $ O (k_j)  $ ), is called the \textcolor{bl2}{standard representation} of $ \rho $  as a product of cycles.  
+\end{bluedefinition} 
+
+\begin{example}
+Consider 
+\[ \rho = \begin{pmatrix}
+1 &  2 &  3 &  4 & 5 & 6 &  7 & 8 & 9 \\ 7 &  1 &  8 &  4 & 6 & 9 &  2 &  3 &  5
+\end{pmatrix}  
+  \] 
+  as a permutation of $ \{1,\dots,9\} $ . The orbits of $ \rho $ are $ \{1,7,2\} $ ,$ \{3.8\} $ , $ \{4\} $ and $ \{5.6.9\} $, and the standard representation of $ \rho $ as a product of disjoint cycles is 
+  \[ (1 \; 7 \; 2\;) (3 \; 8)  (5\; 6 \; 9)   \] 
+    
+\end{example} 
+
+Maths is cool maths
+\end{flushleft}
+\end{document}
